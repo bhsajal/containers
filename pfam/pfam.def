@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/pfam:latest
+
+%labels
+    tool pfam
+    description Pfam domain annotation via HMMER hmmscan
+
+%runscript
+    exec /usr/local/bin/run "$@"

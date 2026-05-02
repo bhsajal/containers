@@ -1,0 +1,10 @@
+Bootstrap: docker
+From: annotation/prodigal:latest
+
+%labels
+    tool prodigal
+    version 2.6.3
+    description Prodigal prokaryotic gene prediction
+
+%runscript
+    exec /usr/local/bin/run "$@"

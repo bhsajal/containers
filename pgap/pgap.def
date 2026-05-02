@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/pgap:latest
+
+%labels
+    tool pgap
+    description NCBI PGAP — Prokaryotic Genome Annotation Pipeline
+
+%runscript
+    exec /usr/local/bin/run "$@"

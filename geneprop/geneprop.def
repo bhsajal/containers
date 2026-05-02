@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/geneprop:latest
+
+%labels
+    tool geneprop
+    description Genome Properties — whole-genome biological property assignment
+
+%runscript
+    exec /usr/local/bin/run "$@"

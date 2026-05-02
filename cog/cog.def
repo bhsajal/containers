@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/cog:latest
+
+%labels
+    tool cog
+    description COGclassifier v2 — COG functional annotation
+
+%runscript
+    exec /usr/local/bin/run "$@"

@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/kegg:latest
+
+%labels
+    tool kegg
+    description KofamScan — KEGG Orthology assignment
+
+%runscript
+    exec /usr/local/bin/run "$@"

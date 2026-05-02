@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/dbcan:latest
+
+%labels
+    tool dbcan
+    description run_dbcan v5 — CAZyme / CGC / substrate annotation
+
+%runscript
+    exec /usr/local/bin/run "$@"

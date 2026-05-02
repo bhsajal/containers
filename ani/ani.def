@@ -1,0 +1,39 @@
+Bootstrap: docker
+From: python:3.11-slim
+
+%labels
+    maintainer annotation-pipeline
+    description ANI — fastANI all-vs-all for prokaryotic genomes
+    version 1.0
+
+%environment
+    export DEBIAN_FRONTEND=noninteractive
+    export PATH=/usr/local/bin:$PATH
+
+%post
+    apt-get update && apt-get install -y --no-install-recommends \
+        wget \
+        unzip \
+        libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+    # Install fastANI v1.34 (pre-compiled static binary)
+    wget -q https://github.com/ParBLiSS/FastANI/releases/download/v1.34/fastANI-Linux64-v1.34.zip \
+        && unzip fastANI-Linux64-v1.34.zip \
+        && mv fastANI /usr/local/bin/fastANI \
+        && chmod +x /usr/local/bin/fastANI \
+        && rm fastANI-Linux64-v1.34.zip
+
+    pip install --no-cache-dir pandas
+
+    mkdir -p /container/scripts /input /output
+
+%files
+    scripts/entrypoint.sh /container/scripts/entrypoint.sh
+    scripts/process_ani.py /container/scripts/process_ani.py
+
+%post
+    chmod +x /container/scripts/entrypoint.sh
+
+%runscript
+    exec /container/scripts/entrypoint.sh "$@"

@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/uniprot:latest
+
+%labels
+    tool uniprot
+    description UniProt/Swiss-Prot homology search via DIAMOND
+
+%runscript
+    exec /usr/local/bin/run "$@"

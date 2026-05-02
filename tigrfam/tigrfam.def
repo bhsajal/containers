@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/tigrfam:latest
+
+%labels
+    tool tigrfam
+    description TIGRFAMs 15.0 annotation via HMMER hmmscan
+
+%runscript
+    exec /usr/local/bin/run "$@"

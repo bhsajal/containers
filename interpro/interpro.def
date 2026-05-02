@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/interpro:latest
+
+%labels
+    tool interpro
+    description InterProScan 5 — multi-database protein domain annotation
+
+%runscript
+    exec /usr/local/bin/run "$@"

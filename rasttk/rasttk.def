@@ -1,0 +1,10 @@
+Bootstrap: docker
+From: annotation/rasttk:latest
+
+%labels
+    tool rasttk
+    version 1.040
+    description RAST-TK / BV-BRC prokaryotic genome annotation
+
+%runscript
+    exec /usr/local/bin/run "$@"

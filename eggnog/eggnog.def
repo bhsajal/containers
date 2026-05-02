@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/eggnog:latest
+
+%labels
+    tool eggnog
+    description eggNOG-mapper v2 — orthology-based functional annotation
+
+%runscript
+    exec /usr/local/bin/run "$@"

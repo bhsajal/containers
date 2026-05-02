@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/tcdb:latest
+
+%labels
+    tool tcdb
+    description TCDB transporter classification via DIAMOND
+
+%runscript
+    exec /usr/local/bin/run "$@"

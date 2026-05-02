@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: annotation/merops:latest
+
+%labels
+    tool merops
+    description MEROPS peptidase identification via DIAMOND
+
+%runscript
+    exec /usr/local/bin/run "$@"
