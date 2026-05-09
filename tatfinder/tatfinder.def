@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: ghcr.io/bhsajal/tatfinder:latest
+
+%labels
+    tool tatfinder
+    description TatFind — Prokaryotic Tat signal peptide predictor
+
+%runscript
+    exec /usr/local/bin/run_tatfinder.sh "$@"

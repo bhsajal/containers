@@ -1,0 +1,39 @@
+Bootstrap: docker
+From: python:3.11-slim
+
+%labels
+    maintainer annotation-pipeline
+    description Synteny analysis — clinker gene cluster comparison
+    version 2.0
+
+%environment
+    export DEBIAN_FRONTEND=noninteractive
+    export PATH=/usr/local/bin:$PATH
+
+%files
+    scripts/entrypoint.sh /container/scripts/entrypoint.sh
+    scripts/process_clinker.py /container/scripts/process_clinker.py
+
+%post
+    # System deps
+    apt-get update && apt-get install -y --no-install-recommends ca-certificates \
+        && rm -rf /var/lib/apt/lists/*
+
+    # Python packages
+    pip install --no-cache-dir clinker pandas plotly
+
+    # Ensure directories exist and entrypoint is executable
+    mkdir -p /input /output /container/scripts
+    chmod +x /container/scripts/entrypoint.sh
+
+%runscript
+    exec /container/scripts/entrypoint.sh "$@"
+
+%help
+    Synteny Analysis Container — clinker gene cluster comparison
+
+    USAGE
+      apptainer run --bind <rasttk_root>:/input:ro,<out_dir>:/output:rw \
+        synteny.sif --organism <name> --partners <A,B,C,D,E> [--identity 0.3] [--jobs 0]
+
+    Run with --help for full usage.

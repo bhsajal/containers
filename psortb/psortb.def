@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: ghcr.io/bhsajal/psortb:latest
+
+%labels
+    tool psortb
+    description PSORTb v3 — prokaryote subcellular localization predictor
+
+%runscript
+    exec /usr/local/bin/run_psortb.sh "$@"

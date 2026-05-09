@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: ghcr.io/bhsajal/tmhmm:latest
+
+%labels
+    tool tmhmm
+    description tmhmm.py — Transmembrane helix prediction (MIT reimplementation of TMHMM2)
+
+%runscript
+    exec /usr/local/bin/run_tmhmm.sh "$@"

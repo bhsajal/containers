@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: ghcr.io/bhsajal/deepsig:latest
+
+%labels
+    tool deepsig
+    description DeepSig — prokaryotic signal peptide predictor (GPL-3)
+
+%runscript
+    exec /usr/local/bin/run_deepsig.sh "$@"

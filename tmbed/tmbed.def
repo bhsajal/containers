@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: ghcr.io/bhsajal/tmbed:latest
+
+%labels
+    tool tmbed
+    description TMbed — deep learning transmembrane segment predictor (Apache-2.0)
+
+%runscript
+    exec /usr/local/bin/run_tmbed.sh "$@"
