@@ -23,5 +23,8 @@ jobs:
     with:
       tool: psortb
       platforms: "linux/amd64"
+    permissions:
+      contents: read
+      packages: write
     secrets:
       GHCR_PAT: ${{ secrets.GHCR_PAT }}

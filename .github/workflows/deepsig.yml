@@ -21,5 +21,8 @@ jobs:
     with:
       tool: deepsig
       platforms: "linux/amd64,linux/arm64"
+    permissions:
+      contents: read
+      packages: write
     secrets:
       GHCR_PAT: ${{ secrets.GHCR_PAT }}
