@@ -24,6 +24,3 @@ jobs:
       tool: psortb
       platforms: "linux/amd64"
     secrets: inherit
-    permissions:
-      contents: read
-      packages: write
