@@ -21,6 +21,7 @@ jobs:
     with:
       tool: tmhmm
       platforms: "linux/amd64,linux/arm64"
+    secrets: inherit
     permissions:
       contents: read
       packages: write
