@@ -14,6 +14,6 @@ COPY patches/ModuleI.pm   ${PERL_BASE}/Bio/Tools/PSort/ModuleI.pm
 COPY patches/psortb3.pl   /usr/local/bin/psortb3_patched.pl
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/run_psortb.sh /usr/local/bin/psortb3_patched.pl
+RUN chmod +x /usr/local/bin/entrypoint.sh /usr/local/bin/psortb3_patched.pl
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
