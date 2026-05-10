@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# deepsig.yml  —  Build & push ghcr.io/bhsajal/deepsig:latest
+#
+# Triggers:
+#   • push to main/final-v3 that touches the deepsig container context
+#   • manual dispatch (Actions → Run workflow)
+# ─────────────────────────────────────────────────────────────────────────────
+name: deepsig container
+
+on:
+  push:
+    branches: [main, final-v3]
+    paths:
+      - "deepsig/**"
+      - ".github/workflows/deepsig.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-container.yml
+    with:
+      tool: deepsig
+      platforms: "linux/amd64,linux/arm64"
+    permissions:
+      contents: read
+      packages: write
