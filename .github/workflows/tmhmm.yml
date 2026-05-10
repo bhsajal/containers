@@ -9,7 +9,7 @@ name: tmhmm container
 
 on:
   push:
-    branches: [main, final-v3]
+    branches: [main, master, final-v3]
     paths:
       - "tmhmm/**"
       - ".github/workflows/tmhmm.yml"

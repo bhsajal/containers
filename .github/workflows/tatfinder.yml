@@ -9,7 +9,7 @@ name: tatfinder container
 
 on:
   push:
-    branches: [main, final-v3]
+    branches: [main, master, final-v3]
     paths:
       - "tatfinder/**"
       - ".github/workflows/tatfinder.yml"

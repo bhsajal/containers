@@ -1,28 +1,26 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# psortb.yml  —  Build & push ghcr.io/bhsajal/psortb:latest
+# eggnog.yml  —  Build & push ghcr.io/bhsajal/eggnog:latest
 #
 # Triggers:
-#   • push to main/final-v3 that touches the psortb container context
+#   • push to main/master/final-v3 that touches the eggnog container context
 #   • manual dispatch (Actions → Run workflow)
-#
-# Note: amd64-only — base image brinkmanlab/psortb_commandline:1.0.2 is x86
 # ─────────────────────────────────────────────────────────────────────────────
-name: psortb container
+name: eggnog container
 
 on:
   push:
     branches: [main, master, final-v3]
     paths:
-      - "psortb/**"
-      - ".github/workflows/psortb.yml"
+      - "eggnog/**"
+      - ".github/workflows/eggnog.yml"
   workflow_dispatch:
 
 jobs:
   build:
     uses: ./.github/workflows/build-container.yml
     with:
-      tool: psortb
-      platforms: "linux/amd64"
+      tool: eggnog
+      platforms: "linux/amd64,linux/arm64"
     permissions:
       contents: read
       packages: write

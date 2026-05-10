@@ -9,7 +9,7 @@ name: tmbed container
 
 on:
   push:
-    branches: [main, final-v3]
+    branches: [main, master, final-v3]
     paths:
       - "tmbed/**"
       - ".github/workflows/tmbed.yml"

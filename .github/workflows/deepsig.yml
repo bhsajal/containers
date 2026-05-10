@@ -9,7 +9,7 @@ name: deepsig container
 
 on:
   push:
-    branches: [main, final-v3]
+    branches: [main, master, final-v3]
     paths:
       - "deepsig/**"
       - ".github/workflows/deepsig.yml"
