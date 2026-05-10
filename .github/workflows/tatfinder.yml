@@ -21,4 +21,5 @@ jobs:
     with:
       tool: tatfinder
       platforms: "linux/amd64,linux/arm64"
-    secrets: inherit
+    secrets:
+      GHCR_PAT: ${{ secrets.GHCR_PAT }}

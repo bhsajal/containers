@@ -23,4 +23,5 @@ jobs:
     with:
       tool: psortb
       platforms: "linux/amd64"
-    secrets: inherit
+    secrets:
+      GHCR_PAT: ${{ secrets.GHCR_PAT }}

@@ -20,6 +20,9 @@ on:
         required: false
         type: string
         default: "linux/amd64,linux/arm64"
+    secrets:
+      GHCR_PAT:
+        required: false
 
 jobs:
   build-and-push:
