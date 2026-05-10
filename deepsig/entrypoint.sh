@@ -14,5 +14,13 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Map pipeline gram convention to deepsig -k values
+case "${ORG}" in
+    GRAM-|gramn) DSORG="gramn" ;;
+    GRAM+|gramp) DSORG="gramp" ;;
+    ARCH|euk)    DSORG="euk"   ;;
+    *)           DSORG="gramn" ;;
+esac
+
 mkdir -p "$OUTPUT_DIR"
-deepsig -f "${INPUT}" -o "${OUTPUT_DIR}/deepsig.gff3" -k "${ORG}"
+deepsig -f "${INPUT}" -o "${OUTPUT_DIR}/deepsig.gff3" -k "${DSORG}"
