@@ -28,6 +28,11 @@ done
 
 mkdir -p "$OUTPUT"
 
+# Redirect DIAMOND scratch/tmp files into the output dir (keeps project root clean)
+TMPDIR="$OUTPUT/tmp"
+mkdir -p "$TMPDIR"
+export TMPDIR
+
 # Remove partial output from a previous run, but only if annotations file is absent/incomplete
 ANNOTATIONS="$OUTPUT/eggnog_out.emapper.annotations"
 if [[ ! -f "$ANNOTATIONS" ]] || ! grep -q "^[^#]" "$ANNOTATIONS" 2>/dev/null; then
@@ -60,6 +65,7 @@ exec emapper.py \
     --output_dir "$OUTPUT" \
     --cpu "$THREADS" \
     --dmnd_db "$DBDIR/eggnog_proteins.dmnd" \
-    --block_size 2.0 \
-    --index_chunks 1
+    --scratch_dir "$TMPDIR" \
+    --block_size 0.5 \
+    --index_chunks 4
 
